@@ -1,8 +1,23 @@
 spring:
   datasource:
     driver-class-name:
-    url: jdbc:mysql://localhost:3306/roki?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/roki?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: root
   jpa:
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    url: jdbc:mysql://localhost:3306/roki?serverTimezone=UTC&characterEncoding=UTF-8
+    user: root
+    password: root
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
