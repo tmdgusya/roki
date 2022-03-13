@@ -10,7 +10,7 @@ import javax.persistence.Id
 class Contributes(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private var id: Long? = null,
 
     @Column(nullable = false)

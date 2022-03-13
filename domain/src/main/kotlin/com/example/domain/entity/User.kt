@@ -7,9 +7,9 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-class Users(
+class User(
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private var id: Long? = null,
 
     @Column(nullable = false, length = 100)
