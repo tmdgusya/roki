@@ -8,14 +8,14 @@ CREATE TABLE `roki`.`users`
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
-CREATE TABLE `roki`.`post`
+CREATE TABLE `roki`.`posts`
 (
     id        BIGINT       NOT NULL AUTO_INCREMENT,
-    tile      VARCHAR(200) NOT NULL,
+    title     VARCHAR(200) NOT NULL,
     content   TEXT         NOT NULL,
     version   INT          NOT NULL DEFAULT 1,
-    createdAt DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updatedAt DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    createdAt DATETIME     NULL     DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME     NULL     DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
