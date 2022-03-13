@@ -1,2 +1,4 @@
 rootProject.name = "roki"
-include("domain")
+
+include(":api-core")
+include(":domain")
