@@ -6,11 +6,10 @@ plugins {
     id("org.flywaydb.flyway") version "7.8.2"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
+    kotlin("plugin.jpa") version "1.6.10"
 }
 
 apply(plugin = "kotlin")
-
-val compileKotlin: KotlinCompile by tasks
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
@@ -37,8 +36,16 @@ flyway {
     encoding = "UTF-8"
 }
 
-compileKotlin.kotlinOptions {
-    jvmTarget = "1.8"
+allOpen { // 추가적으로 열어줄 allOpen
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.MappedSuperclass")
+    annotation("javax.persistence.Embeddable")
+}
+
+noArg {
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.MappedSuperclass")
+    annotation("javax.persistence.Embeddable")
 }
 
 tasks.withType<KotlinCompile> {
@@ -50,20 +57,4 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-tasks {
-    compileKotlin {
-        kotlinOptions {
-            jvmTarget = "11"
-            freeCompilerArgs = listOf("-Xjsr305=strict")
-        }
-    }
-
-    compileTestKotlin {
-        kotlinOptions {
-            jvmTarget = "11"
-            freeCompilerArgs = listOf("-Xjsr305=strict")
-        }
-    }
 }
