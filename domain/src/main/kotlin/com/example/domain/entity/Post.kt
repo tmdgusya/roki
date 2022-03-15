@@ -19,24 +19,35 @@ class Post(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var id: Long? = null,
+    var id: Long? = null,
 
     @Column(length = 200, nullable = false)
-    private var title: String,
+    var title: String,
 
     @Column(nullable = false)
-    private var content: String,
+    var content: String,
 
     @Column(nullable = false)
-    private var version: Int = 1
+    var version: Int = 1
 
 ) {
 
     @CreatedDate
     @Column(name = "createdAt", updatable = false)
-    private var createdAt: LocalDateTime? = null
+    var createdAt: LocalDateTime? = null
 
     @LastModifiedDate
     @Column(name = "updatedAt")
-    private var updatedAt: LocalDateTime? = null
+    var updatedAt: LocalDateTime? = null
+
+    fun updatePost(
+        title: String,
+        content: String
+    ) {
+        this.title = title
+        this.content = content
+        updatePostVersion()
+    }
+
+    private fun updatePostVersion() = this.version + 1
 }

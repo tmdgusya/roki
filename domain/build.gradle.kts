@@ -26,6 +26,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     runtimeOnly("mysql:mysql-connector-java")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.mockk:mockk:1.12.3")
+    testImplementation("io.kotest:kotest-runner-junit5:5.2.1")
+    testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.0")
+    testImplementation("io.kotest:kotest-property:5.2.0")
 }
 
 flyway {

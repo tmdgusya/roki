@@ -1,13 +1,8 @@
 package com.example.domain
 
-import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.context.annotation.Import
 
-@SpringBootTest
-class DomainApplicationTests {
-
-	@Test
-	fun contextLoads() {
-	}
-
-}
+@SpringBootApplication
+@Import(DomainBeanMarker::class)
+class DomainApplicationTests
