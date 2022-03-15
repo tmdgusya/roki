@@ -1,15 +1,14 @@
 package com.example.domain.application
 
 import com.example.domain.UseCase
-import com.example.domain.model.PostUpdateModel
 import com.example.domain.service.PostCommandService
 
 @UseCase
-class PostUpdateFacade(
+class PostDeleteFacade(
     private val postCommandService: PostCommandService
 ) {
 
-    fun execute(postUpdateModel: PostUpdateModel.In) {
-        postCommandService.updatePost(postUpdateModel)
+    fun execute(postId: Long) {
+        postCommandService.deletePost(postId)
     }
 }

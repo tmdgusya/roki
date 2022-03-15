@@ -1,9 +1,12 @@
 package com.roach.apicore.controller
 
+import com.example.domain.application.PostDeleteFacade
 import com.example.domain.application.PostRegisterFacade
 import com.example.domain.application.PostUpdateFacade
 import com.roach.apicore.model.PostRegister
 import com.roach.apicore.model.PostUpdate
+import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController
 class PostController(
     private val postRegisterFacade: PostRegisterFacade,
     private val postUpdateFacade: PostUpdateFacade,
+    private val postDeleteFacade: PostDeleteFacade,
 ) {
 
     /**
@@ -22,11 +26,16 @@ class PostController(
      */
     @PostMapping
     fun register(@RequestBody postRegisterModel: PostRegister.Request) {
-        postRegisterFacade.registerPost(postRegisterModel.toModel())
+        postRegisterFacade.execute(postRegisterModel.toModel())
     }
 
     @PutMapping
     fun update(@RequestBody postUpdateModel: PostUpdate.Request) {
-        postUpdateFacade.update(postUpdateModel.toModel())
+        postUpdateFacade.execute(postUpdateModel.toModel())
+    }
+
+    @DeleteMapping("/{postId}")
+    fun delete(@PathVariable("postId") postId: Long) {
+        postDeleteFacade.execute(postId)
     }
 }

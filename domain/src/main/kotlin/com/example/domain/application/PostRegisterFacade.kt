@@ -9,7 +9,7 @@ class PostRegisterFacade(
     private val postCommandService: PostCommandService
 ) {
 
-    fun registerPost(postRegisterModel: PostRegisterModel.In) {
+    fun execute(postRegisterModel: PostRegisterModel.In) {
         postCommandService.register(postRegisterModel)
     }
 }
