@@ -11,20 +11,20 @@ class Contributes(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var id: Long? = null,
+    var id: Long? = null,
 
     @Column(nullable = false)
-    private var email: String,
+    var email: String,
 
     @Column(length = 255, nullable = false)
-    private var title: String,
+    var title: String,
 
-    private var content: String? = null,
-
-    @Column(nullable = false)
-    private var postId: Long,
+    var content: String? = null,
 
     @Column(nullable = false)
-    private var postUrl: String,
+    var postId: Long,
+
+    @Column(nullable = false)
+    var postUrl: String,
 
 )

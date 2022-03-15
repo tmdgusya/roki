@@ -10,15 +10,15 @@ import javax.persistence.Id
 class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private var id: Long? = null,
+    var id: Long? = null,
 
     @Column(nullable = false, length = 100)
-    private var email: String,
+    var email: String,
 
     @Column(nullable = false, length = 10)
-    private var role: String
+    var role: String
 ) {
 
     @Column(name = "auth_token", length = 200, nullable = true)
-    private var authToken: String? = null
+    var authToken: String? = null
 }
