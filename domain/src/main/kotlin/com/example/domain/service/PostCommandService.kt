@@ -4,16 +4,19 @@ import com.example.domain.model.PostRegisterModel
 import com.example.domain.model.PostUpdateModel
 import com.example.domain.repository.PostRepository
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
 class PostCommandService(
     private val repository: PostRepository
 ) {
 
+    @Transactional
     fun register(postRegisterModel: PostRegisterModel.In) {
         repository.save(postRegisterModel.toPost())
     }
 
+    @Transactional
     fun updatePost(postUpdateModel: PostUpdateModel.In) {
         val post =
             repository.findByPostId(postUpdateModel.postId) ?: throw IllegalArgumentException("해당 게시물이 존재하지 않습니다.")
@@ -26,6 +29,7 @@ class PostCommandService(
         repository.save(post)
     }
 
+    @Transactional
     fun deletePost(postId: Long) {
         val post = repository.findByPostId(postId) ?: throw IllegalArgumentException("해당 게시물이 존재하지 않습니다.")
 
