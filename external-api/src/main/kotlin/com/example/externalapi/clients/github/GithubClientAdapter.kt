@@ -7,7 +7,11 @@ class GithubClientAdapter(
     private val githubClient: GithubClient
 ) {
 
-    fun authorize() {
-        return githubClient.authorize()
+    fun authorize(githubAuthorizeModel: GithubAuthorizeModel.Request): String {
+        return githubClient.authorize(
+            clientId = githubAuthorizeModel.client_id,
+            clientSecret = githubAuthorizeModel.client_secret,
+            code = githubAuthorizeModel.code
+        )
     }
 }
