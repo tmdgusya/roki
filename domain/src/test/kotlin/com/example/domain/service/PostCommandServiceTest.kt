@@ -13,6 +13,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import java.util.Optional
 
 @ExtendWith(MockKExtension::class)
 class PostCommandServiceTest {
@@ -32,7 +33,7 @@ class PostCommandServiceTest {
             title = "updateTitle",
             content = "updateContent"
         )
-        every { postRepository.findByPostId(postId) } returns null
+        every { postRepository.findById(postId) } returns Optional.empty()
 
         // when
         val result = shouldThrow<java.lang.IllegalArgumentException> {
@@ -54,7 +55,7 @@ class PostCommandServiceTest {
         )
         val mockPost = mockk<Post>(relaxed = true)
 
-        every { postRepository.findByPostId(postId) } returns mockPost
+        every { postRepository.findById(postId) } returns Optional.of(mockPost)
         every { postRepository.save(mockPost) } returns mockPost
 
         // when

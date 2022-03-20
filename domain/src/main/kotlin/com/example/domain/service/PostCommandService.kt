@@ -18,9 +18,9 @@ class PostCommandService(
 
     @Transactional
     fun updatePost(postUpdateModel: PostUpdateModel.In) {
-        val post =
-            repository.findByPostId(postUpdateModel.postId) ?: throw IllegalArgumentException("해당 게시물이 존재하지 않습니다.")
-
+        val post = repository.findById(postUpdateModel.postId).orElseThrow {
+            throw IllegalArgumentException("해당 게시물이 존재하지 않습니다.")
+        }
         post.updatePost(
             title = postUpdateModel.title,
             content = postUpdateModel.content
@@ -31,7 +31,9 @@ class PostCommandService(
 
     @Transactional
     fun deletePost(postId: Long) {
-        val post = repository.findByPostId(postId) ?: throw IllegalArgumentException("해당 게시물이 존재하지 않습니다.")
+        val post = repository.findById(postId).orElseThrow {
+            throw IllegalArgumentException("해당 게시물이 존재하지 않습니다.")
+        }
 
         repository.delete(post)
     }
