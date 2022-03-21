@@ -1,11 +1,11 @@
 CREATE TABLE `roki`.`users`
 (
     id         BIGINT       NOT NULL AUTO_INCREMENT,
-    email      VARCHAR(100) NOT NULL,
+    email      VARCHAR(100) NOT NULL UNIQUE,
     blogUrl    VARCHAR(255) NOT NULL,
     avatarUrl  VARCHAR(255) NOT NULL,
     auth_token VARCHAR(200) NULL,
-    role       VARCHAR(10)  NOT NULL,
+    role       VARCHAR(30)  NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;

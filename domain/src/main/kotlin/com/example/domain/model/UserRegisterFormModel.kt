@@ -11,8 +11,7 @@ class UserRegisterFormModel private constructor() {
         fun toEntity(): User {
             return User(
                 email = userEmail,
-                password = password,
-                role = Role.REGISTERED_USER.name
+                role = Role.REGISTERED_USER
             )
         }
     }

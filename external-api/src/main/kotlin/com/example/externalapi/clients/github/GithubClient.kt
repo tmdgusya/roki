@@ -1,19 +1,15 @@
 package com.example.externalapi.clients.github
 
 import org.springframework.cloud.openfeign.FeignClient
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestHeader
 
 @FeignClient(
     name = "github-client",
-    url = "https://github.com/login",
+    url = "https://api.github.com"
 )
 interface GithubClient {
 
-    @PostMapping("/oauth/access_token")
-    fun authorize(
-        @RequestParam("client_id") clientId: String,
-        @RequestParam("client_secret") clientSecret: String,
-        @RequestParam("code") code: String
-    ): String
+    @GetMapping("/user")
+    fun getUserProfile(@RequestHeader("Authorization") authToken: String): GithubUserProfileInfo
 }
