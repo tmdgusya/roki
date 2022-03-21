@@ -2,7 +2,8 @@ CREATE TABLE `roki`.`users`
 (
     id         BIGINT       NOT NULL AUTO_INCREMENT,
     email      VARCHAR(100) NOT NULL,
-    password   VARCHAR(30)  NOT NULL,
+    blogUrl    VARCHAR(255) NOT NULL,
+    avatarUrl  VARCHAR(255) NOT NULL,
     auth_token VARCHAR(200) NULL,
     role       VARCHAR(10)  NOT NULL,
     PRIMARY KEY (`id`)
