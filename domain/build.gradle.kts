@@ -15,6 +15,8 @@ group = "com.example"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
+extra["springCloudVersion"] = "2021.0.1"
+
 repositories {
     mavenCentral()
 }
@@ -33,6 +35,12 @@ dependencies {
     testImplementation("io.kotest:kotest-runner-junit5:5.2.1")
     testImplementation("io.kotest.extensions:kotest-extensions-spring:1.1.0")
     testImplementation("io.kotest:kotest-property:5.2.0")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+    }
 }
 
 flyway {
