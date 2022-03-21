@@ -1,6 +1,6 @@
 package com.example.domain.model
 
-import com.example.externalapi.clients.github.GithubAuthorizeModel
+import com.example.externalapi.clients.github.GithubAuthorizePort
 
 class GithubAuthModel private constructor() {
     data class In(
@@ -15,7 +15,7 @@ class GithubAuthModel private constructor() {
         val tokenType: String
     ) {
         companion object {
-            fun toResponse(githubAuthorizeModel: GithubAuthorizeModel.Response): Out {
+            fun toResponse(githubAuthorizeModel: GithubAuthorizePort.Response): Out {
                 return Out(
                     accessToken = githubAuthorizeModel.access_token,
                     scope = githubAuthorizeModel.scope,

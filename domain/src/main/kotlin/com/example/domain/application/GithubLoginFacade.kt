@@ -2,7 +2,7 @@ package com.example.domain.application
 
 import com.example.domain.UseCase
 import com.example.domain.model.GithubAuthModel
-import com.example.externalapi.clients.github.GithubAuthorizeModel
+import com.example.externalapi.clients.github.GithubAuthorizePort
 import com.example.externalapi.clients.github.GithubClientAdapter
 import org.slf4j.LoggerFactory
 
@@ -12,7 +12,7 @@ class GithubLoginFacade(
 ) {
 
     fun authorize(githubAuthModel: GithubAuthModel.In): String {
-        val request = GithubAuthorizeModel.Request.from(
+        val request = GithubAuthorizePort.In.from(
             secretId = githubAuthModel.secretId,
             clientSecret = githubAuthModel.clientSecret,
             code = githubAuthModel.code

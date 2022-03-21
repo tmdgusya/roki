@@ -1,7 +1,7 @@
 package com.example.externalapi.clients.github
 
-class GithubAuthorizeModel private constructor() {
-    data class Request(
+class GithubAuthorizePort private constructor() {
+    data class In(
         val client_id: String,
         val client_secret: String,
         val code: String
@@ -11,8 +11,8 @@ class GithubAuthorizeModel private constructor() {
                 secretId: String,
                 clientSecret: String,
                 code: String
-            ): Request {
-                return Request(
+            ): In {
+                return In(
                     client_id = secretId,
                     client_secret = clientSecret,
                     code = code
