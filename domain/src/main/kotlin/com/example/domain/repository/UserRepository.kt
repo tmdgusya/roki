@@ -10,5 +10,5 @@ interface UserRepository : CrudRepository<User, Long> {
      * Query Optimization
      */
     @Query("SELECT EXISTS(SELECT 1 FROM users u WHERE u.email = :email)", nativeQuery = true)
-    fun existsByUserEmail(email: String): Boolean
+    fun existsByUserEmail(email: String): Int
 }

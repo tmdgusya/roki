@@ -37,6 +37,10 @@ class GithubLoginFacadeTest {
     @Test
     fun `중복된 유저가 존재할 경우 IllegalAccessException 을 전파한다`() {
         // given
+        val clientId = "clientID"
+        val clientSecret = "clientSecret"
+        val code = "code"
+
         `깃허브 리스폰스 셋업`()
 
         every {
@@ -48,7 +52,9 @@ class GithubLoginFacadeTest {
         // when
         val result = shouldThrow<IllegalAccessException> {
             githubLoginFacade.getUserProfile(
-                authToken = "any"
+                clientId = clientId,
+                clientSecret = clientSecret,
+                code = code
             )
         }
 
@@ -57,6 +63,14 @@ class GithubLoginFacadeTest {
     }
 
     private fun `깃허브 리스폰스 셋업`() {
+        every {
+            githubClient.getAuthorizationToken(
+                clientId = any(),
+                clientSecret = any(),
+                code = any(),
+            )
+        } returns "authToken"
+
         every {
             githubClient.getUserProfile(any())
         } returns GithubUserProfileInfo(

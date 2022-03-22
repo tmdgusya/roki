@@ -17,7 +17,14 @@ class GithubLoginFacade(
     private val userQueryService: UserQueryService,
 ) {
 
-    fun getUserProfile(authToken: String) {
+    fun getUserProfile(clientId: String, clientSecret: String, code: String) {
+
+        val authToken = githubClient.getAuthorizationToken(
+            clientId = clientId,
+            clientSecret = clientSecret,
+            code = code
+        )
+
         val userProfile = githubClient.getUserProfile(authToken = authToken)
 
         userQueryService.checkExist(userEmail = userProfile.email) isFalse {

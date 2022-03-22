@@ -18,6 +18,7 @@ class UserQueryService(
     }
 
     fun checkExist(userEmail: String): Boolean {
-        return userRepository.existsByUserEmail(userEmail)
+        val EXIST_USER = 1
+        return userRepository.existsByUserEmail(userEmail) == EXIST_USER
     }
 }

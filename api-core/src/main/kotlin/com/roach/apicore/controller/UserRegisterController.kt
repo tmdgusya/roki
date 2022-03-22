@@ -2,7 +2,7 @@ package com.roach.apicore.controller
 
 import com.example.domain.application.GithubLoginFacade
 import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestHeader
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -12,10 +12,14 @@ class UserRegisterController(
 
     @PostMapping("/github-users")
     fun registerWithGithub(
-        @RequestHeader("Authorization") authToken: String
+        @RequestParam("clientId") clientId: String,
+        @RequestParam("clientSecret") clientSecret: String,
+        @RequestParam("code") code: String
     ) {
         githubLoginFacade.getUserProfile(
-            authToken = authToken
+            clientId = clientId,
+            clientSecret = clientSecret,
+            code = code
         )
     }
 }
