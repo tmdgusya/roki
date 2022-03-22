@@ -22,7 +22,7 @@ class User(
     @Column(nullable = true, length = 255)
     var blogUrl: String? = null,
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = true, length = 255)
     val avatarUrl: String? = null,
 
     @Convert(converter = RoleConverter::class)
