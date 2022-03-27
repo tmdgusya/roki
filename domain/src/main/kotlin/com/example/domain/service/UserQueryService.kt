@@ -21,6 +21,10 @@ class UserQueryService(
         return userRepository.existsByUserEmail(userEmail) == EXIST_USER
     }
 
+    fun findOne(email: String): User? {
+        return userRepository.findByEmail(email)
+    }
+
     companion object {
         private const val EXIST_USER = 1
     }

@@ -11,7 +11,7 @@ class UserCommandService(
 ) {
 
     @Transactional
-    fun register(user: User) {
-        userRepository.save(user)
+    fun register(user: User): User {
+        return userRepository.save(user)
     }
 }
