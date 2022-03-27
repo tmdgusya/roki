@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name:
-    url: jdbc:mysql://localhost:3306/roki?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3307/roki?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: root
   jpa:
@@ -13,6 +13,7 @@ spring:
       hibernate:
         format_sql: true
     open-in-view: false
+    database: mysql
 
   
   flyway:

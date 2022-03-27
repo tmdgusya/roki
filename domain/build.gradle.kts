@@ -44,7 +44,7 @@ dependencyManagement {
 }
 
 flyway {
-    url = "jdbc:mysql://localhost:3306/roki?serverTimezone=UTC&characterEncoding=UTF-8"
+    url = "jdbc:mysql://localhost:3307/roki?serverTimezone=UTC&characterEncoding=UTF-8"
     user = "root"
     locations = arrayOf("filesystem:${file("src/main/resources/db/migration/").absolutePath}")
     password = "root"
